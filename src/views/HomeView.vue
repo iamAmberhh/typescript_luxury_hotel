@@ -1,9 +1,11 @@
 <template>
+
   <main>
-    <a class="btn btn-primary">foe</a>
+    <a class="btn btn-primary">test</a>
   </main>
 </template>
 
 
-<script setup lang="ts">
+<script setup>
+
 </script>

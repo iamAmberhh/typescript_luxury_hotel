@@ -1,5 +1,5 @@
 <template>
-   <nav class="container-xxl navbar navbar-expand-lg bg-body-tertiary">
+   <nav class="navbar navbar-expand-lg" style="height: 120px;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/logo.png?raw=true" alt="logo" class="img-fluid logo"></a>
@@ -21,7 +21,15 @@
         </div>
       </div>
     </nav>
-  <main>
-    <a class="btn btn-primary">test</a>
-  </main>
 </template>
+
+<script setup lang="ts">
+
+</script>
+
+
+<style scoped lang="scss">
+.navbar-brand {
+  max-width: 300px;
+}
+</style>
