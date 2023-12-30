@@ -8,7 +8,7 @@
         <div class="login-bg"></div>
       </div>
       <div
-        class="col-12 col-lg-4 offset-lg-1 bg-dark d-flex justify-content-center align-items-center"
+        class="col-12 col-lg-6 bg-dark d-flex justify-content-center align-items-center title-deco-bg-line"
       >
         <form class="w-75">
           <span
@@ -59,7 +59,7 @@
           </div>
           <RouterLink
             to="/member"
-            class="btn btn-light w-100 p-3 mb-5 login-btn"
+            class="btn btn-light w-100 p-3 mb-5 light-btn"
           >
             會員登入
           </RouterLink>
@@ -83,18 +83,5 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <style scoped lang="scss">
-.login-bg {
-  width: 100%;
-  height: 100%;
-  background: url(https://github.com/hexschool/2022-web-layout-training/blob/main/typescript-hotel/%E6%A1%8C%E6%A9%9F%E7%89%88/register.png?raw=true) center/cover no-repeat;
-
-}
-
-.login-btn {
-  color: #909090;
-  &:hover {
-    background: #bf9d7d;
-    color: #fff;
-  }
-}
+@import '../style/all.scss';
 </style>
