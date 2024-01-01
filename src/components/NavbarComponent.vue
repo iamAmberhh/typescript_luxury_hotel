@@ -13,18 +13,18 @@
         <div class="d-none d-lg-flex" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item me-lg-3">
-              <a class="nav-link active link-light p-3" aria-current="page" href="#">客房旅宿</a>
+              <a class="nav-link active text-white p-3" aria-current="page" href="#">客房旅宿</a>
             </li>
             <li class="nav-item me-lg-3">
               <RouterLink
                 to="/login"
-                class="nav-link link-light p-3"
+                class="nav-link text-white p-3"
               >
                 會員登入
               </RouterLink>
             </li>
             <li class="nav-item">
-              <a class="link-light btn btn-primary p-3 px-4 link-white" href="#">立即訂房</a>
+              <a class="link-white btn btn-primary p-3 px-4 text-white" href="#">立即訂房</a>
             </li>
           </ul>
         </div>
@@ -37,18 +37,18 @@
             <div class="modal-body bg-dark">
               <ul class="h-100 d-flex flex-column justify-content-center align-items-center text-center">
                 <li class="mb-3">
-                  <a class="nav-link active link-light p-3" aria-current="page" href="#">客房旅宿</a>
+                  <a class="nav-link active link-white p-3" aria-current="page" href="#">客房旅宿</a>
                 </li>
                 <li class="mb-3">
                   <RouterLink
                     to="/login"
-                    class="nav-link link-light p-3"
+                    class="nav-link link-white p-3"
                   >
                     會員登入
                   </RouterLink>
                 </li>
                 <li class="w-100">
-                  <a class="d-block link-light btn btn-primary p-3 px-4 link-white" href="#">立即訂房</a>
+                  <a class="d-block btn btn-primary p-3 px-4 text-white" href="#">立即訂房</a>
                 </li>
               </ul>
             </div>
@@ -73,6 +73,9 @@ import { RouterLink } from 'vue-router'
 
 
 <style scoped lang="scss">
+.navbar-dark{
+  background-color: none !important;
+}
 .navbar-brand {
   max-width: 300px;
 }

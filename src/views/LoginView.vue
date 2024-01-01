@@ -59,7 +59,7 @@
           </div>
           <RouterLink
             to="/member"
-            class="btn btn-light w-100 p-3 mb-5 light-btn"
+            class="btn w-100 p-3 mb-5 light-btn"
           >
             會員登入
           </RouterLink>

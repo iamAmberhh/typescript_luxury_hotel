@@ -51,7 +51,7 @@
                 placeholder="請再輸入一次密碼"
               />
             </div>
-            <button class="btn btn-light w-100 p-3 mb-5 light-btn" @click="handleNextStep">
+            <button class="btn w-100 p-3 mb-5 light-btn" @click="handleNextStep">
               下一步
             </button>
           </div>
@@ -89,7 +89,7 @@
               <input type="checkbox" class="form-check-input" id="agree" />
               <label class="form-check-label" for="agree">我已閱讀並同意本網站個資使用規範</label>
             </div>
-            <button type="submit" class="btn btn-primary w-100 p-2 mb-5">完成註冊</button>
+            <button type="submit" class="btn btn-primary w-100 p-3 mb-5 text-white">完成註冊</button>
           </div>
           <p>已經有會員了嗎? <RouterLink to="/login" class="text-primary">立即登入</RouterLink></p>
         </form>
