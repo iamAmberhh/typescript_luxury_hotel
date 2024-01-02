@@ -1,4 +1,6 @@
 <template>
+  <Navbar />
+
   <div class="text-white">
     <div class="row g-0" style="height: calc(100dvh - 120px)">
       <div class="col-6 d-none d-lg-block">
@@ -99,6 +101,7 @@
 </template>
 
 <script setup>
+import Navbar from "@/components/NavbarComponent.vue"
 import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 

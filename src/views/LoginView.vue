@@ -1,4 +1,6 @@
 <template>
+  <Navbar />
+
   <div class="text-white">
     <div
       class="row g-0"
@@ -79,6 +81,7 @@
 </template>
 
 <script setup>
+import Navbar from "@/components/NavbarComponent.vue"
 import { RouterLink } from 'vue-router'
 </script>
 

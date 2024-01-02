@@ -1,8 +1,9 @@
 <template>
   <main>
+    
     <div class="banner-bg">
       <div class="banner-shadow">
-        <Navbar></Navbar>
+        <Navbar/>
         <div class="container-fluid">
           <div class="row banner-session">
             <div
@@ -16,7 +17,12 @@
               <div class="banner-title-opacity-bg">
                 <h2 class="display-1 fw-bold mb-4">高雄<br />豪華住宿之選</h2>
                 <p class="fs-5 mb-5" style="font-weight: 600;">我們致力於為您提供無與倫比的奢華體驗與優質服務</p>
-                <a href="#" class="btn btn-white py-3 index-width-btn fw-bold fs-5">立即訂房</a>
+                <RouterLink
+                  to="/rooms"
+                  class="btn btn-white py-3 index-width-btn fw-bold fs-5"
+                >
+                  立即訂房
+              </RouterLink>
               </div>
             </div>
           </div>
@@ -130,7 +136,12 @@
             <p class="fs-sm mb-3 mb-lg-5">享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。</p>
             <p class="fs-2 fw-bold mb-4">NT$ 10,000</p>
             <div>
-              <a href="#" class="w-100 btn btn-white py-3 index-width-btn">查看更多</a>
+              <RouterLink
+                to="/rooms"
+                class="w-100 btn btn-white py-3 index-width-btn"
+              >
+                查看更多
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -276,21 +287,21 @@
         <div class="traffic-map mb-5"></div>
         <div class="row text-white gy-4 gy-lg-0 gx-lg-5">
           <div class="col-md-4">
-            <span class="text-primary">icon</span>
+            <span class="material-symbols-outlined display-3 text-primary">directions_car</span>
             <h4 class="my-2">自行開車</h4>
             <p>
               如果您選擇自行開車，可以透過國道一號下高雄交流道，往市區方向行駛，並依路標指示即可抵達「享樂酒店」。飯店內設有停車場，讓您停車方便。
             </p>
           </div>
           <div class="col-md-4">
-            <span class="text-primary">icon</span>
+            <span class="material-symbols-outlined display-3 text-primary">directions_subway</span>
             <h4 class="my-2">高鐵/火車</h4>
             <p>
               如果您是搭乘高鐵或火車，可於左營站下車，外頭有計程車站，搭乘計程車約20分鐘即可抵達。或者您也可以轉乘捷運紅線至中央公園站下車，步行約10分鐘便可抵達。
             </p>
           </div>
           <div class="col-md-4">
-            <span class="text-primary">icon</span>
+            <span class="material-symbols-outlined display-3 text-primary">local_taxi</span>
             <h4 class="my-2">禮賓車服務</h4>
             <p>
               承億酒店提供禮賓專車接送服務，但因目的地遠近會有不同的收費，請撥打電話將由專人為您服務洽詢專線：(07)123-4567
@@ -300,63 +311,22 @@
       </div>
     </section>
 
-    <section>
-      <footer class="container">
-        <div class="row text-white justify-content-between" style="margin-bottom: 80px;">
-          <div class="col-lg-2 mb-5 mb-lg-0">
-            <img
-              src="../assets/img/logo.png"
-              style="width: 196px"
-              class="img-fluid d-block mb-4"
-              alt="logo"
-            />
-            <ul class="d-flex ps-0">
-              <li class="footer-social-icon me-2"><i class="bi bi-facebook fs-4"></i></li>
-              <li class="footer-social-icon"><i class="bi bi-instagram fs-4"></i></li>
-            </ul>
-          </div>
-          <div class="col-lg-5 d-lg-flex justify-content-end">
-            <ul class="ps-0 me-lg-5">
-              <li class="mb-3">
-                <p class="fw-bold">TEL</p>
-                <span>+886-7-1234567</span>
-              </li>
-              <li class="mb-3">
-                <p class="fw-bold">FAX</p>
-                <span>+886-7-1234567</span>
-              </li>
-            </ul>
-            <ul class="ps-0">
-              <li class="mb-3">
-                <p class="fw-bold">MAIL</p>
-                <span>elh@hexschool.com</span>
-              </li>
-              <li>
-                <p class="fw-bold">WEB</p>
-                <span>www.elhhexschool.com.tw</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="d-lg-flex justify-content-between align-items-center">
-          <p class="mb-2 mb-lg-0">806023 台灣高雄市新興區六角路123號</p>
-          <p>© 享樂酒店 2023 All Rights Reserved.</p>
-        </div>
-      </footer>
-    </section>
+    <Footer/>
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted } from 'vue'
 import Navbar from "@/components/NavbarComponent.vue"
+import Footer from "@/components/FooterComponent.vue"
+import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { RouterLink } from 'vue-router'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 // import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const foodSectionSlides = ref(3)
+const foodSectionSlides = ref(3.3)
 const windowWidth = ref(window.innerWidth)
 
 onMounted(() => {
@@ -371,7 +341,7 @@ onUnmounted(() => {
 watch(
   windowWidth, 
   (value) => {
-    foodSectionSlides.value = value <= 996 ? 1.2 : 3
+    foodSectionSlides.value = value <= 996 ? 1.2 : 3.3
   }, 
   { immediate: true }
 )
@@ -451,7 +421,6 @@ const handleResize = () => {
       }
     }
   }
-  
 }
 
  .index-width-btn {
@@ -671,17 +640,4 @@ section {
     background-size: contain;
   }
 }
-.footer-social-icon{
-  width: 40px;
-  height: 40px;
-  border-radius:50%;
-  border: 1px solid white;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-
 </style>

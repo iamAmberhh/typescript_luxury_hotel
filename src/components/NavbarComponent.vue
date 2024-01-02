@@ -13,7 +13,12 @@
         <div class="d-none d-lg-flex" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item me-lg-3">
-              <a class="nav-link active text-white p-3" aria-current="page" href="#">客房旅宿</a>
+              <RouterLink
+                to="/rooms"
+                class="nav-link active text-white p-3"
+              >
+                客房旅宿
+              </RouterLink>
             </li>
             <li class="nav-item me-lg-3">
               <RouterLink
@@ -36,10 +41,15 @@
             </div>
             <div class="modal-body bg-dark">
               <ul class="h-100 d-flex flex-column justify-content-center align-items-center text-center">
-                <li class="mb-3">
-                  <a class="nav-link active link-white p-3" aria-current="page" href="#">客房旅宿</a>
+                <li class="mb-3" data-bs-dismiss="modal" aria-label="Close">
+                  <RouterLink
+                    to="/rooms"
+                    class="nav-link active link-white p-3"
+                  >
+                  客房旅宿
+                  </RouterLink>
                 </li>
-                <li class="mb-3">
+                <li class="mb-3" data-bs-dismiss="modal" aria-label="Close">
                   <RouterLink
                     to="/login"
                     class="nav-link link-white p-3"
@@ -47,8 +57,13 @@
                     會員登入
                   </RouterLink>
                 </li>
-                <li class="w-100">
-                  <a class="d-block btn btn-primary p-3 px-4 text-white" href="#">立即訂房</a>
+                <li class="w-100" data-bs-dismiss="modal" aria-label="Close">
+                  <RouterLink
+                    to="/rooms"
+                    class="d-block btn btn-primary p-3 px-4 text-white"
+                  >
+                    立即訂房
+                  </RouterLink>
                 </li>
               </ul>
             </div>
@@ -60,15 +75,7 @@
 </template>
 
 <script setup lang="ts">
-// import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-
-// const mobileNavLink = ref(false)
-
-// const handleNavbarOpen = () => {
-//   mobileNavLink.value = true
-//   console.log(mobileNavLink.value)
-// }
 </script>
 
 
