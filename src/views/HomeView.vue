@@ -15,7 +15,7 @@
             </div>
             <div class="col-lg-6">
               <div class="banner-title-opacity-bg">
-                <h2 class="display-1 fw-bold mb-4">高雄<br />豪華住宿之選</h2>
+                <h2 class="display-1 fw-bold mb-4 text-white">高雄<br />豪華住宿之選</h2>
                 <p class="fs-5 mb-5" style="font-weight: 600;">我們致力於為您提供無與倫比的奢華體驗與優質服務</p>
                 <RouterLink
                   to="/rooms"
@@ -447,13 +447,6 @@ const handleResize = () => {
       content: "";
       background: white;
     }
-  }
-}
-
-section {
-  padding: 80px 0;
-  @media (min-width: 996px) {
-    padding: 120px 0;
   }
 }
 

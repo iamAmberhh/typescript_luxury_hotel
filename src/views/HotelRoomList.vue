@@ -12,7 +12,7 @@
             <div class="banner-title-deco-line"></div>
           </div>
           <div class="col-lg-4">
-            <h2 class="display-1 fw-bold text-center">客房旅宿</h2>
+            <h2 class="display-1 fw-bold text-center text-white">客房旅宿</h2>
           </div>
         </div>
       </div>
@@ -38,10 +38,10 @@
                   <img src="../assets/img/room2-1.png" class="card-img-top rounded-0" alt="room">
                 </swiper-slide>
                 <swiper-slide>
-                  <img src="../assets/img/room2-2.png" class="card-img-top" alt="room">
+                  <img src="../assets/img/room2-2.png" class="card-img-top rounded-0" alt="room">
                 </swiper-slide>
                 <swiper-slide>
-                  <img src="../assets/img/room2-4.png" class="card-img-top" alt="room">
+                  <img src="../assets/img/room2-4.png" class="card-img-top rounded-0" alt="room">
                 </swiper-slide>
                 <div class="swiper-pagination"></div>
                 <div class="d-none d-lg-flex swiper-btn swiper-btn-prev">
@@ -58,18 +58,18 @@
             </div>
             <div class="col-lg-5">
               <div class="card-body p-4 px-lg-5">
-                <h3 class="card-title text-black fw-bold">尊爵雙人房 </h3>
+                <h3 class="card-title text-black fw-bold">尊爵雙人房</h3>
                 <p class="card-text text-secondary mb-5">享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。</p>
                 <ul class="d-flex text-black">
-                  <li class="room-detail me-3">
+                  <li class="room-detail-icon me-3">
                     <span class="material-symbols-outlined text-primary">fit_screen</span>
                     <br>24 坪
                   </li>
-                  <li class="room-detail me-3">
+                  <li class="room-detail-icon me-3">
                     <span class="material-symbols-outlined text-primary">bed</span>
                     <br>1 張大床
                   </li>
-                  <li class="room-detail">
+                  <li class="room-detail-icon">
                     <span class="material-symbols-outlined text-primary">person</span>
                     <br>2-4 人
                   </li>
@@ -173,13 +173,6 @@ const pagination = {
   }
 }
 
-section {
-  padding: 80px 0;
-  @media (min-width: 996px) {
-    padding: 120px 0;
-  }
-}
-
 .room-list {
   .card {
     border-radius: 15px;
@@ -196,7 +189,7 @@ section {
   }
 }
 
-.room-detail {
+.room-detail-icon {
   border-radius: 10px;
   padding: 16px 20px;
   border: 2px solid #f1eae4;

@@ -36,7 +36,7 @@
         </ul>
       </div>
     </div>
-    <div class="d-lg-flex justify-content-between align-items-center">
+    <div class="d-lg-flex justify-content-between align-items-center text-white">
       <p class="mb-2 mb-lg-0">806023 台灣高雄市新興區六角路123號</p>
       <p>© 享樂酒店 2023 All Rights Reserved.</p>
     </div>
