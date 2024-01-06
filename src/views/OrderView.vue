@@ -1,46 +1,81 @@
 <template>
   <Navbar />
-  <div class="pt-lg-5 px-lg-5 bg-light">
-    <swiper
-      :modules="modules"
-      :loop="true"
-      :pagination="pagination"
-      class="swiper"
-    >
-      <swiper-slide>
-        <img src="../assets/img/room2-1.png" class="card-img-top rounded-0" alt="room">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="../assets/img/room2-2.png" class="card-img-top rounded-0" alt="room">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="../assets/img/room2-4.png" class="card-img-top rounded-0" alt="room">
-      </swiper-slide>
-      <div class="swiper-pagination"></div>
-    </swiper>
-  </div>
   <section class="bg-light">
     <div class="container">
       <div class="row gx-lg-5 mb-5 mb-lg-0">
         <div class="col-lg-7">
-          <h1 class="text-primary fw-bold">尊爵雙人房</h1>
-          <p class="text-black" style="margin-bottom: 80px;">
-            享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。
+          <p class="fw-bold fs-3 mb-5">
+            <span class="material-symbols-outlined fw-bold"> keyboard_arrow_left </span>
+            確認訂房資訊
           </p>
+          <div class="border-bottom border-2 pb-5 mb-5">
+            <h2 class="fw-bold mb-4">訂房資訊</h2>
+            <ul class="mb-0">
+              <li class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex flex-column">
+                  <span class="subtitle-deco mb-1 fw-bold">選擇房型</span>
+                  <span>尊爵雙人房</span>
+                </div>
+                <a href="#" class="text-black">編輯</a>
+              </li>
+              <li class="d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-column">
+                  <span class="subtitle-deco mb-1 fw-bold">房客人數</span>
+                  <span>2 人</span>
+                </div>
+                <a href="#" class="text-black">編輯</a>
+              </li>
+            </ul>
+          </div>
+          <div class="border-bottom border-2 pb-5 mb-5">
+            <h2 class="mb-4 d-flex justify-content-between align-items-center fw-bold">
+              訂房人資訊
+              <a href="#" class="fs-6 primary">套用會員資料</a>
+            </h2>
+            <form class="fw-bold">
+              <div class="mb-3">
+                <label for="name" class="form-label">姓名</label>
+                <input type="email" class="form-control mb-3" id="name" placeholder="請輸入姓名" />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">手機號碼</label>
+                <input type="text" class="form-control" id="phone" placeholder="請輸入手機號碼" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">電子信箱</label>
+                <input
+                  type="email"
+                  class="form-control mb-3"
+                  id="email"
+                  aria-describedby="emailHelp"
+                  placeholder="請輸入電子信箱"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">地址</label>
+                <div class="d-flex mb-2">
+                  <input type="text" class="form-control me-2" id="address" placeholder="高雄市" />
+                  <input type="text" class="form-control" placeholder="新興區" />
+                </div>
+                <input type="text" class="form-control me-2" placeholder="請輸入詳細地址" />
+              </div>
+            </form>
+          </div>
           <div class="mb-5">
+            <h2 class="fw-bold mb-5">房間資訊</h2>
             <h3 class="fs-4 subtitle-deco mb-4 fw-bold">房型基本資訊</h3>
             <ul class="d-flex text-black">
               <li class="room-detail-icon me-3">
                 <span class="material-symbols-outlined text-primary">fit_screen</span>
-                <br>24 坪
+                <br />24 坪
               </li>
               <li class="room-detail-icon me-3">
                 <span class="material-symbols-outlined text-primary">bed</span>
-                <br>1 張大床
+                <br />1 張大床
               </li>
               <li class="room-detail-icon">
                 <span class="material-symbols-outlined text-primary">person</span>
-                <br>2-4 人
+                <br />2-4 人
               </li>
             </ul>
           </div>
@@ -139,30 +174,29 @@
         </div>
         <div class="col-lg-5 sidebar-sticky">
           <div class="huge-card">
-            <p class="fw-bold mb-4">預訂房型</p>
-            <div class="mb-4">
-              <h2 class="fw-bold">尊爵雙人房</h2>
-              <p>享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。</p>
+            <img
+              src="../assets/img/room2-1.png"
+              class="card-img-top rounded-3 mb-3 mb-lg-5"
+              alt="img"
+            />
+            <div>
+              <p class="fs-3 fw-bold mb-3">價格詳情</p>
+              <p class="card-text d-flex justify-content-between mb-2">
+                <span>NT$ 10,000 X 2 晚</span>
+                <span>NT$ 20,000</span>
+              </p>
+              <p class="card-text d-flex justify-content-between pb-4 mb-4 border-bottom">
+                <span>住宿折扣</span>
+                <span class="text-primary">-NT$ 1,000</span>
+              </p>
+              <p class="card-text d-flex justify-content-between mb-4 fw-bold">
+                <span>總價</span>
+                <span>NT$ 19,000</span>
+              </p>
+              <a href="#" class="w-100 btn btn-primary text-white py-3">確認訂房</a>
             </div>
-            <p class="text-primary mb-4 fs-4 fw-bold">NT$ 10,000</p>
-            <a href="#" class="btn btn-primary w-100 text-white py-3">立即預訂</a>
           </div>
         </div>
-      </div>
-      <div>
-        <h3 class="fs-4 subtitle-deco mb-4 fw-bold">訂房須知</h3>
-        <ol>
-          <li>入住時間為下午3點，退房時間為上午12點。</li>
-          <li>如需延遲退房，請提前與櫃檯人員聯繫，視當日房況可能會產生額外費用。</li>
-          <li>請勿在房間內抽煙，若有抽煙需求，可以使用設在酒店各樓層的專用吸煙區。</li>
-          <li>若發現房間內的設施有損壞或遺失，將會按照價值收取賠償金。</li>
-          <li>請愛惜我們的房間與公共空間，並保持整潔。</li>
-          <li>如需額外的毛巾、盥洗用品或其他物品，請聯繫櫃檯。</li>
-          <li>我們提供免費的Wi-Fi，密碼可以在櫃檯或是房間內的資訊卡上找到。</li>
-          <li>請勿帶走酒店房內的物品，如有需要購買，請與我們的櫃檯人員聯繫。</li>
-          <li>我們提供24小時櫃檯服務，若有任何需求或疑問，歡迎隨時詢問。</li>
-          <li>為了確保所有客人的安全，請勿在走廊或公共區域大聲喧嘩，並遵守酒店的其他規定。</li>
-        </ol>
       </div>
     </div>
   </section>
@@ -179,10 +213,10 @@ import 'swiper/css/pagination'
 import '@/style/all.scss'
 
 const modules = [Pagination]
- 
+
 const pagination = {
   clickable: true,
-  el:'.swiper-pagination'
+  el: '.swiper-pagination'
 }
 </script>
 
@@ -204,7 +238,7 @@ const pagination = {
   background: white;
 }
 
-.sidebar-sticky{
+.sidebar-sticky {
   position: sticky;
   top: 50px;
   height: 100%;
