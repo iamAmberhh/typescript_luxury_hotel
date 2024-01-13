@@ -16,7 +16,7 @@
             <div class="col-lg-6">
               <div class="banner-title-opacity-bg">
                 <h2 class="display-1 fw-bold mb-4 text-white">高雄<br />豪華住宿之選</h2>
-                <p class="fs-5 mb-5" style="font-weight: 600;">我們致力於為您提供無與倫比的奢華體驗與優質服務</p>
+                <p class="fs-5 mb-5 text-white" style="font-weight: 600;">我們致力於為您提供無與倫比的奢華體驗與優質服務</p>
                 <RouterLink
                   to="/rooms"
                   class="btn btn-white py-3 index-width-btn fw-bold fs-5"
@@ -349,6 +349,7 @@ watch(
 const handleResize = () => {
   windowWidth.value = window.innerWidth
 }
+
 </script>
 
 <style scoped lang="scss">

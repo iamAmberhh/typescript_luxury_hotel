@@ -14,6 +14,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@andy922200/vue-tw-zip-code-selector": "^1.0.1",
+    "axios": "^1.6.5",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.2",
     "pinia": "^2.1.7",
