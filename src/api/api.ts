@@ -3,7 +3,11 @@ import axios from 'axios'
 
 const service = axios.create()
 
-export default function axiosReq(config) {
+export default function axiosReq(config: {
+  url: string,
+  data: Record <string ,any>,
+  method: string
+}) {
   return service({
     baseURL: `https://freyja-1d2y.onrender.com/api/v1`,
     // baseURL: 'http://localhost:3005/api/v1',

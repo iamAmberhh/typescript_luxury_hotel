@@ -159,15 +159,33 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Navbar from "@/components/NavbarComponent.vue"
 import { postRegisterRequest } from '@/api/users'
 import { RouterLink,useRouter } from 'vue-router'
 import { ref } from 'vue'
 
+interface registerData {
+  email: string,
+  password: string,
+  confirmPassword: string,
+  name: string,
+  phone: string,
+  bornYear: undefined,
+  bornMonth: undefined,
+  bornDay: undefined,
+  birthday?: string,
+  address:{
+    zipcode: number | undefined, 
+    city: string,
+    country:string,
+    detail:string
+  }
+}
+
 const router = useRouter()
-const registerStep = ref(1)
-const registerForm = ref({
+const registerStep = ref<number>(1)
+const registerForm = ref<registerData>({
   email: '',
   password: '',
   confirmPassword:'',
@@ -184,7 +202,7 @@ const registerForm = ref({
   }
 })
 
-const handleNextStep = (e) => {
+const handleNextStep = (e :Event) => {
   e.preventDefault()
   if(registerForm.value.email == ''){
     alert('請填寫Email')
@@ -213,8 +231,16 @@ const handleRegister = () => {
   })
 }
 
-const getSelectedZone = (e) => {
-  registerForm.value.address.zipcode = e.value.zipCode
+interface CustomEventWithValue {
+  value: {
+    zipCode: string,
+    countryName: string,
+    name: string,
+  };
+}
+
+const getSelectedZone = (e: CustomEventWithValue) => {
+  registerForm.value.address.zipcode = Number(e.value.zipCode)
   registerForm.value.address.city = e.value.countryName
   registerForm.value.address.country = e.value.name
 }

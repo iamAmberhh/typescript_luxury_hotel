@@ -321,13 +321,12 @@ import Footer from "@/components/FooterComponent.vue"
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-// import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const foodSectionSlides = ref(3.3)
-const windowWidth = ref(window.innerWidth)
+const foodSectionSlides = ref<number>(3.3)
+const windowWidth = ref<number>(window.innerWidth)
 
 onMounted(() => {
   handleResize()

@@ -92,7 +92,7 @@
   <Footer />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Navbar from "@/components/NavbarComponent.vue"
 import Footer from "@/components/FooterComponent.vue"
 import { Swiper, SwiperSlide } from 'swiper/vue'

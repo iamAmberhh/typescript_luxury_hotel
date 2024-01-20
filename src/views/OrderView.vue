@@ -203,21 +203,10 @@
   <Footer />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Navbar from '@/components/NavbarComponent.vue'
 import Footer from '@/components/FooterComponent.vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import '@/style/all.scss'
 
-const modules = [Pagination]
-
-const pagination = {
-  clickable: true,
-  el: '.swiper-pagination'
-}
 </script>
 
 <style lang="scss" scoped>
@@ -242,20 +231,5 @@ const pagination = {
   position: sticky;
   top: 50px;
   height: 100%;
-}
-
-.swiper {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  img {
-    height: 200px;
-    object-fit: cover;
-  }
-  @media (min-width: 996px) {
-    img {
-      height: 470px;
-    }
-  }
 }
 </style>

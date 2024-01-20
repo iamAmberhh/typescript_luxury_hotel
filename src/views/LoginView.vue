@@ -58,7 +58,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Navbar from '@/components/NavbarComponent.vue'
 import { ref } from 'vue'
 import { postLoginRequest } from '@/api/users.js'
@@ -66,12 +66,17 @@ import { RouterLink, useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const loginData = ref({
+interface LoginData {
+  email: string;
+  password: string;
+}
+
+const loginData = ref<LoginData>({
   email: '',
   password: ''
 })
 
-const handleLogin = () => {
+const handleLogin = ():void => {
   postLoginRequest(
     loginData.value
   ).then(({ data }) => {
@@ -81,7 +86,7 @@ const handleLogin = () => {
   }).catch((err) => {
     alert (err.response.data.message)
   })
-  }
+}
 </script>
 
 <style scoped lang="scss">
