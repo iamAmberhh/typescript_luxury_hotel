@@ -59,7 +59,11 @@
                 required
               />
             </div>
-            <button class="btn w-100 p-3 mb-5 light-btn" @click="handleNextStep">
+            <button
+              type="button"
+              class="btn w-100 p-3 mb-5 light-btn"
+              @click="handleNextStep"
+            >
               下一步
             </button>
           </div>
@@ -141,16 +145,31 @@
               />
             </div>
             <div class="mb-5">
-              <input type="checkbox" class="form-check-input" id="agree" />
+              <input
+                v-model="userCheckRef"
+                type="checkbox"
+                class="form-check-input"
+                id="agree"
+                required
+              />
               <label class="form-check-label" for="agree">我已閱讀並同意本網站個資使用規範</label>
             </div>
-            <button
-              type="submit"
-              class="btn btn-primary w-100 p-3 mb-5 text-white"
-              @click="handleRegister"
-            >
-              完成註冊
-            </button>
+            <div class="d-flex justify-content-between">
+              <button
+                type="button"
+                class="btn w-50 p-3 light-btn me-3 mb-5"
+                @click="handleLastStep"
+              >
+                上一步
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary w-50 p-3 mb-5 text-white"
+                @click="handleRegister"
+              >
+                完成註冊
+              </button>
+            </div>
           </div>
           <p>已經有會員了嗎? <RouterLink to="/login" class="text-primary">立即登入</RouterLink></p>
         </form>
@@ -164,6 +183,7 @@ import Navbar from "@/components/NavbarComponent.vue"
 import { postRegisterRequest } from '@/api/users'
 import { RouterLink,useRouter } from 'vue-router'
 import { ref } from 'vue'
+import Swal from 'sweetalert2'
 
 interface registerData {
   email: string,
@@ -201,47 +221,97 @@ const registerForm = ref<registerData>({
     detail:''
   }
 })
+const userCheckRef = ref<boolean>(false)
 
 const handleNextStep = (e :Event) => {
   e.preventDefault()
   if(registerForm.value.email == ''){
-    alert('請填寫Email')
+    Swal.fire({
+      title: "請填寫Email",
+      icon: "warning"
+    });
+    return
+  }
+  if(!registerForm.value.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)){
+    Swal.fire({
+      title: "Email格式錯誤",
+      text: "請輸入正確有效的Email",
+      icon: "error"
+    });
     return
   }
   if(!registerForm.value.password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)){
-    alert('密碼至少 8 碼以上，須包含英文字母和數字')
+    Swal.fire({
+      title: "請填寫密碼",
+      text: "密碼至少 8 碼以上，須包含英文字母和數字",
+      icon: "warning"
+    });
     return
   }
   if(registerForm.value.password !== registerForm.value.confirmPassword){
-    alert('密碼與確認密碼不同')
+    Swal.fire({
+      title: "密碼與確認密碼不同",
+      icon: "error"
+    });
     return
   }
   registerStep.value = 2
 }
 
+const handleLastStep = () => {
+  registerStep.value = 1
+}
+
 const handleRegister = () => {
+  if(!registerForm.value.name || !registerForm.value.phone || !registerForm.value.bornYear || !registerForm.value.bornMonth || !registerForm.value.bornDay || !registerForm.value.address.city || !registerForm.value.address.country || !registerForm.value.address.detail){
+    Swal.fire({
+      title: "表單未完成",
+      text: "請確實填寫註冊資料",
+      icon: "warning"
+    });
+    return
+  }
+
+  if(!userCheckRef.value){
+    Swal.fire({
+      title: "表單未完成",
+      text: "您尚未同意個資使用規範",
+      icon: "warning"
+    });
+    return
+  }
+
   registerForm.value.birthday = `${registerForm.value.bornYear}/${registerForm.value.bornMonth}/${registerForm.value.bornDay}`
+  console.log(registerForm.value)
   postRegisterRequest(
     registerForm.value
   ).then(() => {
-    alert('已完成註冊')
+    Swal.fire({
+      title: "註冊成功",
+      text: "即將前往登入頁",
+      icon: "success"
+    });
     router.push('/login')
   }).catch((err) => {
-    alert (err.response.data.message)
+    Swal.fire({
+      title: "註冊失敗",
+      text: err.response.data.message,
+      icon: "error"
+    });
   })
 }
 
 interface CustomEventWithValue {
   value: {
     zipCode: string,
-    countryName: string,
+    countyName: string,
     name: string,
   };
 }
 
 const getSelectedZone = (e: CustomEventWithValue) => {
   registerForm.value.address.zipcode = Number(e.value.zipCode)
-  registerForm.value.address.city = e.value.countryName
+  registerForm.value.address.city = e.value.countyName
   registerForm.value.address.country = e.value.name
 }
 </script>
