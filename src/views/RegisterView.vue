@@ -180,6 +180,7 @@
 
 <script setup lang="ts">
 import Navbar from "@/components/NavbarComponent.vue"
+import { postVerifyEmailRequest } from '@/api/verify'
 import { postRegisterRequest } from '@/api/users'
 import { RouterLink,useRouter } from 'vue-router'
 import { ref } from 'vue'
@@ -255,7 +256,20 @@ const handleNextStep = (e :Event) => {
     });
     return
   }
-  registerStep.value = 2
+
+  postVerifyEmailRequest(
+    registerForm.value.email
+  ).then(({ data }) => {
+    const isEmailExists = data.result.isEmailExists
+    if(!isEmailExists){
+      registerStep.value = 2
+    } else{
+      Swal.fire({
+      title: "此帳號已經註冊過囉！",
+      icon: "error"
+    });
+    }
+  })
 }
 
 const handleLastStep = () => {

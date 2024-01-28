@@ -34,12 +34,14 @@
               required
             />
           </div>
-          <div class="mb-5 form-check d-flex justify-content-between align-items-center">
-            <div>
-              <input type="checkbox" class="form-check-input" id="accountRemember" />
-              <label class="form-check-label" for="accountRemember">記住帳號</label>
-            </div>
-            <a href="#" class="text-primary">忘記密碼?</a>
+          <div class="mb-5 form-check d-flex justify-content-end align-items-center">
+            <a
+              href="#"
+              class="text-primary"
+              @click="handleForgetPassword"
+            >
+              忘記密碼?
+            </a>
           </div>
           <button
             type="submit"
@@ -61,8 +63,10 @@
 <script setup lang="ts">
 import Navbar from '@/components/NavbarComponent.vue'
 import { ref } from 'vue'
-import { postLoginRequest } from '@/api/users.js'
+import { postLoginRequest, postForgetPasswordRequest } from '@/api/users.js'
+import { postGenerateEmailCodeRequest } from '@/api/verify.js'
 import { RouterLink, useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
 
 const router = useRouter()
 
@@ -71,20 +75,119 @@ interface LoginData {
   password: string;
 }
 
+interface ForgetData {
+  email: string,
+  code: string,
+  newPassword: string
+}
+
 const loginData = ref<LoginData>({
   email: '',
   password: ''
 })
 
+const userEmailRef = ref<string>('')
+
 const handleLogin = ():void => {
   postLoginRequest(
     loginData.value
   ).then(({ data }) => {
-    alert('登入成功')
-    localStorage.setItem('token', data.token)
-    router.push('/')
+    Swal.fire({
+      title: "登入成功",
+      text: "開始挑選喜歡的房型吧",
+      icon: "success"
+    }).then(() => {
+      localStorage.setItem('token', data.token)
+      router.push('/')
+    })
   }).catch((err) => {
-    alert (err.response.data.message)
+    Swal.fire({
+      title: "登入失敗",
+      text: err.response.data.message,
+      icon: "error"
+    })
+  })
+}
+
+const handleForgetPassword = (e:Event) => {
+  e.preventDefault()
+  Swal.fire({
+    title: "請輸入您的Email",
+    input: "text",
+    inputAttributes: {
+      autocapitalize: "off"
+  },
+  confirmButtonText: "送出",
+  showLoaderOnConfirm: true,
+  preConfirm: async (email) => {
+    // console.log(email)
+    userEmailRef.value = email
+    postGenerateEmailCodeRequest(
+      email
+    ).then(() => {
+      Swal.fire({
+        title: "已將驗證信發送到您的信箱",
+        text: "請設定新密碼",
+        icon: "success",
+        preConfirm: () => {
+          setNewPassword()
+        }
+      })
+    }).catch((err) => {
+      Swal.fire({
+        title: "驗證失敗，請確認Email",
+        text: err.response.data.message,
+        icon: "error"
+      })
+    })
+  },
+  allowOutsideClick: () => !Swal.isLoading()
+})
+}
+
+const setNewPassword = () => {
+  Swal.fire({
+    title: "請輸入新密碼及驗證碼",
+    html: `
+    <label for="swal-input1">請輸入驗證碼</label>
+    <input id="swal-input1" class="swal2-input">
+    <label for="swal-input2">請輸入新密碼</label>
+    <input id="swal-input2" class="swal2-input" type="password">
+  `,
+    inputAttributes: {
+      autocapitalize: "off"
+    },
+    confirmButtonText: "送出",
+    showLoaderOnConfirm: true,
+    preConfirm: () => {
+      const code = document.getElementById("swal-input1") as HTMLInputElement
+      const newPassword = document.getElementById("swal-input2") as HTMLInputElement
+      const forgetPasswordData:ForgetData = {
+        email: userEmailRef.value,
+        code: code.value,
+        newPassword: newPassword.value,
+      }
+      postForgetPasswordRequest(
+        forgetPasswordData
+      ).then(() => {
+        Swal.fire({
+          title: "密碼重設成功",
+          text: "請使用新密碼登入",
+          icon: "success",
+        })
+      }).catch((err) => {
+        console.log(err.response)
+        Swal.fire({
+        title: "密碼重設失敗",
+        text: err.response.data.message,
+        icon: "error",
+        preConfirm: () => {
+          setNewPassword()
+        }
+      })
+      })
+    },
+    allowOutsideClick: () => !Swal.isLoading()
   })
 }
 </script>

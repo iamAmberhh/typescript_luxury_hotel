@@ -34,3 +34,15 @@ export const postRegisterRequest = (registerForm:{
     method: 'post'
   })
 }
+
+export const postForgetPasswordRequest = (forgetPasswordForm:{
+  email: string,
+  code: string,
+  newPassword: string
+}) => {
+  return axiosReq({
+    url: '/user/forgot',
+    data: forgetPasswordForm,
+    method: 'post'
+  })
+}
